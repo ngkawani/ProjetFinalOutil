@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #Configuration
-$DATE =$(date '+%Y-%m-%d-%H:%M:%S')
 
 #Fonctions
 
