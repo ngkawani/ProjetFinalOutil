@@ -7,7 +7,7 @@ $DATE =$(date '+%Y-%m-%d-%H:%M:%S')
 
 get_cpu_usage(){
     LocaL $usage
-    $usage=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}')
+    usage=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}')
 
     if [[ -z "$usage" || "$usage" == *"e+"*]]; then
         echo "0"
