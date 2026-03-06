@@ -5,3 +5,5 @@ get_disk_usage(){
 
     echo "Disque actuellement utilisé : $usage%"
 }
+
+get_disk_usage
