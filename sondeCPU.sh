@@ -16,5 +16,5 @@ get_cpu_usage(){
 }
 
 while true; do
-    get_cpu_usage()
+    get_cpu_usage();
 end
