@@ -5,8 +5,3 @@ get_disk_usage(){
 
     echo "Disque actuellement utilisé : $usage%"
 }
-
-while true; 
-do
-    get_disk_usage();
-done
