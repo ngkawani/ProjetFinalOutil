@@ -9,13 +9,13 @@ template_file = os.path.join(config_dir, "template_mail.html")
 data_file = "exportfile.json"
 
 config_defaut = {
-    "cpu_threshold": 80.0,
+    "cpu_threshold": 0.0,
     "ram_threshold": 85.0,
     "disk_threshold": 90.0,
-    "admin_email": "matteo.jaubert@alumni.univ-avignon.fr",
+    "admin_email": "matheo.leclerc@alumni.univ-avignon.fr",
     "smtp_server": "partage.univ-avignon.fr",
     "smtp_port": 465,
-    "smtp_user": "matteo.jaubert@alumni.univ-avignon.fr",
+    "smtp_user": "matheo.leclerc@alumni.univ-avignon.fr",
     "smtp_pass": "mdp"
 }
 
@@ -50,7 +50,7 @@ def get_data_from_json():
         data = json.load(f)
     
     row_data = data['data']
-    last_entry = row_data[-2]
+    last_entry = row_data[-3]
 
     if last_entry[0] is not None:
         return {
