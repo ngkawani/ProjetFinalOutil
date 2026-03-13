@@ -2,6 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 import json
 import os
+import subprocess
 
 url = "https://www.cert.ssi.gouv.fr/feed/"
 json_file = "derniere_alerte.json"
@@ -41,3 +42,12 @@ if item is not None:
         json.dump(nouvelle_alerte, f, indent=4, ensure_ascii=False)
 
     print(f"Nouvelle alerte enregistrée : '{titre[:30]}...'")
+
+    subprocess.run([
+        "./stockage.sh",
+        "CERT",
+        titre,
+        date_pub,
+        link,
+        etat
+    ])
