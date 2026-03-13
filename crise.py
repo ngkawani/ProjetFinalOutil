@@ -6,7 +6,7 @@ from email.message import EmailMessage
 config_dir = "config"
 config_file = os.path.join(config_dir, "crisis_config.json")
 template_file = os.path.join(config_dir, "template_mail.html")
-data_file = "export.json"
+data_file = "derniere_alerte.json"
 
 config_defaut = {
     "cpu_threshold": 80.0,
@@ -77,7 +77,7 @@ def send_mail(stats):
         with smtplib.SMTP_SSL(config["smtp_server"], config["smtp_port"]) as server:
             server.login(config["smtp_user"], config["smtp_pass"])
             server.send_message(msg)
-        print("Mail envoyé.")
+        print("Mail envoyé .")
     except Exception as e:
         print(f"Erreur d'envoi SMTP : {e}")
 
