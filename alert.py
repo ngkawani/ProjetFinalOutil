@@ -44,7 +44,7 @@ if item is not None:
     print(f"Nouvelle alerte enregistrée : '{titre[:30]}...'")
 
     subprocess.run([
-        "./stockage.sh",
+        "./storage.sh",
         "CERT",
         titre,
         date_pub,
