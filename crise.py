@@ -12,18 +12,18 @@ config_defaut = {
     "cpu_threshold": 80.0,
     "ram_threshold": 85.0,
     "disk_threshold": 90.0,
-    "admin_email": "email",
-    "smtp_server": "smtp",
+    "admin_email": "matteo.jaubert@alumni.univ-avignon.fr",
+    "smtp_server": "partage.univ-avignon.fr",
     "smtp_port": 465,
-    "smtp_user": "email",
+    "smtp_user": "matteo.jaubert@alumni.univ-avignon.fr",
     "smtp_pass": "mdp"
 }
 
 template_defaut = """
 <html>
-<body style="font-family: Comic Sans MS;">
-    <h2>Il y a un piti probleme la</h2>
-    <p>J'ai detected un depassement la, j'avoue c'est la crise</p>
+<body style="font-family: Arial, sans-serif;">
+    <h2 style="color: red;">SITUATION DE CRISE ATTEINTE: </h2>
+    <p>Le module de crise a détecté un dépassement :</p>
     <ul>
         <li><strong>CPU :</strong> {cpu}%</li>
         <li><strong>RAM :</strong> {ram}%</li>
@@ -68,7 +68,7 @@ def send_mail(stats):
 
     msg = EmailMessage()
     msg.set_content(content, subtype='html')
-    msg['Subject'] = "[AUTOMATIQUE] Crise : Probleme de serv la"
+    msg['Subject'] = "[AUTOMATIQUE] Crise : Alerte Ressources Serveur"
     msg['From'] = config["smtp_user"]
     msg['To'] = config["admin_email"]
 
@@ -77,7 +77,7 @@ def send_mail(stats):
         with smtplib.SMTP_SSL(config["smtp_server"], config["smtp_port"]) as server:
             server.login(config["smtp_user"], config["smtp_pass"])
             server.send_message(msg)
-        print("Mail envoyé .")
+        print("Mail envoyé avec succès via le serveur de l'université.")
     except Exception as e:
         print(f"Erreur d'envoi SMTP : {e}")
 
@@ -98,5 +98,4 @@ if stats:
     else:
         print(f"OK. CPU:{stats['cpu']} RAM:{stats['ram']} DISK:{stats['disk']}")
 else:
-
     print("Erreur : Impossible de lire les données JSON.")
